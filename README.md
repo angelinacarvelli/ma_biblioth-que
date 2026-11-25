@@ -11,6 +11,8 @@ Ma bibliothèque/
 
 dans powershell terminal
 & "C:\Program Files\PostgreSQL\17\bin\psql.exe" -h 127.0.0.1 -U postgres -d mabibliotheque
-
 SELECT COUNT(*) FROM livres;
 SELECT id, titre, auteur, annee_parution, image FROM livres ORDER BY id;
+
+
+ng serve et .\mvnw.cmd spring-boot:run
