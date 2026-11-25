@@ -1,0 +1,44 @@
+<main class="max-w-5xl mx-auto px-6 py-10">
+
+  <div *ngIf="livre() as currentLivre; else loading"
+       class="grid md:grid-cols-2 gap-10">
+
+    <img
+      [src]="'assets/images/' + currentLivre.image"
+      [alt]="'Couverture de ' + currentLivre.titre"
+      class="w-full rounded-xl shadow-lg">
+
+    <section>
+      <h1 class="text-3xl font-bold mb-4">
+        {{ currentLivre.titre }}
+      </h1>
+
+      <p class="text-lg text-gray-600">
+        Auteur : {{ currentLivre.auteur }}
+      </p>
+
+      <p class="mt-3">
+        Année : {{ currentLivre.anneeParution }}
+      </p>
+
+      <h2 class="text-xl font-bold mt-8 mb-3">
+        Résumé
+      </h2>
+
+      <p class="text-gray-700 leading-relaxed">
+        {{ currentLivre.resume }}
+      </p>
+    </section>
+
+  </div>
+
+  <ng-template #loading>
+    <p *ngIf="introuvable(); else waiting">
+      Livre introuvable.
+    </p>
+    <ng-template #waiting>
+      <p>Chargement du livre...</p>
+    </ng-template>
+  </ng-template>
+
+</main>

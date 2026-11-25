@@ -1,0 +1,41 @@
+<main class="max-w-6xl mx-auto px-6 py-10">
+
+  <h1 class="text-3xl font-bold mb-8">
+    Ma bibliothèque
+  </h1>
+
+  <p *ngIf="erreur()" class="text-red-600 mb-6">
+    Impossible de charger les livres depuis l'API (vérifie que le backend tourne sur le port 8081).
+  </p>
+
+  <section class="grid grid-cols-1 sm:grid-cols-2
+                  lg:grid-cols-3 gap-8">
+
+    <article
+      *ngFor="let livre of livres()"
+      class="bg-white rounded-xl shadow-md
+             overflow-hidden hover:shadow-xl transition">
+
+      <a [routerLink]="['/livres', livre.slug]">
+
+        <img
+          [src]="'assets/images/' + livre.image"
+          [alt]="'Couverture de ' + livre.titre"
+          loading="lazy"
+          class="w-full h-72 object-cover">
+
+        <div class="p-5">
+          <h2 class="text-xl font-bold">
+            {{ livre.titre }}
+          </h2>
+
+          <p class="text-gray-600 mt-2">
+            {{ livre.auteur }}
+          </p>
+        </div>
+
+      </a>
+    </article>
+
+  </section>
+</main>
